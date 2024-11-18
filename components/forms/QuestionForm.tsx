@@ -54,7 +54,7 @@ const QuestionForm = () => {
               <FormControl>
                 <Input
                   {...field}
-                  className="paragraph-regular background-light700_dark300 light-border-2 text-dark300_light700 no-focus min-h-[56px]\ border"
+                  className="paragraph-regular background-light700_dark300 light-border-2 text-dark300_light700 no-focus min-h-[56px] border"
                 />
               </FormControl>
               <FormDescription className="body-regular text-light-500 mt-2.5">
@@ -74,7 +74,7 @@ const QuestionForm = () => {
                 Detailed Explanation of your problem{" "}
                 <span className="text-primary-500">*</span>
               </FormLabel>
-              <FormControl>
+              <FormControl className="rounded-[7px] light-border-2 border">
                 <Editor
                   value={field.value}
                   editorRef={editorRef}
@@ -102,7 +102,7 @@ const QuestionForm = () => {
                   <Input
                     {...field}
                     placeholder="Add tags..."
-                    className="paragraph-regular background-light700_dark300 light-border-2 text-dark300_light700 no-focus min-h-[56px]\ border"
+                    className="paragraph-regular background-light700_dark300 light-border-2 text-dark300_light700 no-focus min-h-[56px] border"
                   />
                   Tags
                 </div>
