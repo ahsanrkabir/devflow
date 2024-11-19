@@ -27,7 +27,7 @@ export class ValidationError extends RequestError {
       ([field, messages]) => {
         const fieldName = field.charAt(0).toUpperCase() + field.slice(1);
 
-        if (messages[0] === "required") {
+        if (messages[0] === "Required") {
           return `${fieldName} is required`;
         } else {
           return messages.join(" and ");
