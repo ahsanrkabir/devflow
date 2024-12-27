@@ -23,17 +23,19 @@ export class ValidationError extends RequestError {
   }
 
   static formatFieldErrors(errors: Record<string, string[]>): string {
-    const formatedMessages = Object.entries(errors).map(([field, messages]) => {
-      const fieldName = field.charAt(0).toUpperCase() + field.slice(1);
+    const formattedMessages = Object.entries(errors).map(
+      ([field, messages]) => {
+        const fieldName = field.charAt(0).toUpperCase() + field.slice(1);
 
-      if (messages[0] === "required") {
-        return `${fieldName} is required`;
-      } else {
-        return messages.join(" and ");
+        if (messages[0] === "Required") {
+          return `${fieldName} is required`;
+        } else {
+          return messages.join(" and ");
+        }
       }
-    });
+    );
 
-    return formatedMessages.join(", ");
+    return formattedMessages.join(", ");
   }
 }
 
