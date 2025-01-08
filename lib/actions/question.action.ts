@@ -1,6 +1,11 @@
 "use server";
 
+import mongoose, { FilterQuery } from "mongoose";
+
 import Question, { IQuestionDoc } from "@/database/question.model";
+import TagQuestion from "@/database/tag-question.model";
+import Tag, { ITagDoc } from "@/database/tag.model";
+
 import action from "../handlers/action";
 import handleError from "../handlers/error";
 import {
@@ -9,9 +14,6 @@ import {
   GetQuestionSchema,
   PaginatedSearchParamsSchema,
 } from "../validations";
-import mongoose, { FilterQuery } from "mongoose";
-import Tag, { ITagDoc } from "@/database/tag.model";
-import TagQuestion from "@/database/tag-question.model";
 
 export async function createQuestion(
   params: CreateQuestionParams

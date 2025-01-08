@@ -2,12 +2,16 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { MDXEditorMethods } from "@mdxeditor/editor";
+import { ReloadIcon } from "@radix-ui/react-icons";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
 import React, { useRef, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { ReloadIcon } from "@radix-ui/react-icons";
 
+import ROUTES from "@/constants/routes";
+import { toast } from "@/hooks/use-toast";
+import { createQuestion, editQuestion } from "@/lib/actions/question.action";
 import { AskQuestionSchema } from "@/lib/validations";
 
 import TagCard from "../cards/TagCard";
@@ -22,13 +26,8 @@ import {
   FormMessage,
 } from "../ui/form";
 import { Input } from "../ui/input";
-import { createQuestion, editQuestion } from "@/lib/actions/question.action";
-import { toast } from "@/hooks/use-toast";
-import { useRouter } from "next/navigation";
-import ROUTES from "@/constants/routes";
 
 const Editor = dynamic(() => import("@/components/editor"), {
-  // Make sure we turn SSR off
   ssr: false,
 });
 
@@ -55,6 +54,7 @@ const QuestionForm = ({ question, isEdit = false }: Params) => {
     e: React.KeyboardEvent<HTMLInputElement>,
     field: { value: string[] }
   ) => {
+    console.log(field, e);
     if (e.key === "Enter") {
       e.preventDefault();
       const tagInput = e.currentTarget.value.trim();
@@ -106,7 +106,8 @@ const QuestionForm = ({ question, isEdit = false }: Params) => {
             description: "Question updated successfully",
           });
 
-          if (result.data) router.push(ROUTES.QUESTION(result.data._id));
+          if (result.data)
+            router.push(ROUTES.QUESTION(result.data._id as string));
         } else {
           toast({
             title: `Error ${result.status}`,
@@ -148,17 +149,17 @@ const QuestionForm = ({ question, isEdit = false }: Params) => {
           name="title"
           render={({ field }) => (
             <FormItem className="flex w-full flex-col">
-              <FormLabel className="paragraph-medium text-dark400_light800">
+              <FormLabel className="paragraph-semibold text-dark400_light800">
                 Question Title <span className="text-primary-500">*</span>
               </FormLabel>
               <FormControl>
                 <Input
-                  {...field}
                   className="paragraph-regular background-light700_dark300 light-border-2 text-dark300_light700 no-focus min-h-[56px] border"
+                  {...field}
                 />
               </FormControl>
               <FormDescription className="body-regular mt-2.5 text-light-500">
-                Be specific and image you&apos;re asking a question to another
+                Be specific and imagine you&apos;re asking a question to another
                 person.
               </FormDescription>
               <FormMessage />
@@ -170,8 +171,8 @@ const QuestionForm = ({ question, isEdit = false }: Params) => {
           name="content"
           render={({ field }) => (
             <FormItem className="flex w-full flex-col">
-              <FormLabel className="paragraph-medium text-dark400_light800">
-                Detailed Explanation of your problem{" "}
+              <FormLabel className="paragraph-semibold text-dark400_light800">
+                Detailed explanation of your problem{" "}
                 <span className="text-primary-500">*</span>
               </FormLabel>
               <FormControl>
@@ -193,15 +194,15 @@ const QuestionForm = ({ question, isEdit = false }: Params) => {
           control={form.control}
           name="tags"
           render={({ field }) => (
-            <FormItem className="flex w-full flex-col">
-              <FormLabel className="paragraph-medium text-dark400_light800">
+            <FormItem className="flex w-full flex-col gap-3">
+              <FormLabel className="paragraph-semibold text-dark400_light800">
                 Tags <span className="text-primary-500">*</span>
               </FormLabel>
               <FormControl>
                 <div>
                   <Input
-                    placeholder="Add tags..."
                     className="paragraph-regular background-light700_dark300 light-border-2 text-dark300_light700 no-focus min-h-[56px] border"
+                    placeholder="Add tags..."
                     onKeyDown={(e) => handleInputKeyDown(e, field)}
                   />
                   {field.value.length > 0 && (
@@ -222,7 +223,7 @@ const QuestionForm = ({ question, isEdit = false }: Params) => {
                 </div>
               </FormControl>
               <FormDescription className="body-regular mt-2.5 text-light-500">
-                Add upto 3 tags to describe what your question is about. You
+                Add up to 3 tags to describe what your question is about. You
                 need to press enter to add a tag.
               </FormDescription>
               <FormMessage />
@@ -242,7 +243,7 @@ const QuestionForm = ({ question, isEdit = false }: Params) => {
                 <span>Submitting</span>
               </>
             ) : (
-              <>{isEdit ? "Edit" : "Ask A Question"}</>
+              <>{isEdit ? "Edit" : "Ask a Question"}</>
             )}
           </Button>
         </div>

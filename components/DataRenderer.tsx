@@ -1,6 +1,8 @@
-import { DEFAULT_EMPTY, DEFAULT_ERROR } from "@/constants/states";
 import Image from "next/image";
 import Link from "next/link";
+
+import { DEFAULT_EMPTY, DEFAULT_ERROR } from "@/constants/states";
+
 import { Button } from "./ui/button";
 
 interface Props<T> {
@@ -66,7 +68,7 @@ const StateSkeleton = ({
 
     {button && (
       <Link href={button.href}>
-        <Button className="paragraph-medium mt-5 min-h-[46px] rounded-lg !bg-primary-500 px-4 py-3 !text-light-900 !hover:bg-primary-500">
+        <Button className="paragraph-medium !hover:bg-primary-500 mt-5 min-h-[46px] rounded-lg !bg-primary-500 px-4 py-3 !text-light-900">
           {button.text}
         </Button>
       </Link>
