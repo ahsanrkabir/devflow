@@ -12,16 +12,15 @@ const compat = new FlatCompat({
   allConfig: js.configs.all,
 });
 
-const config = [
+const eslintConfig = [
   {
-    ignores: ["components/ui/**/*"],
+    "ignores": ["components/ui/**"],
   },
   ...compat.extends(
     "next/core-web-vitals",
     "next/typescript",
     "standard",
     "plugin:tailwindcss/recommended",
-    "plugin:prettier/recommended",
     "prettier"
   ),
   {
@@ -29,34 +28,29 @@ const config = [
       "import/order": [
         "error",
         {
-          groups: [
+          "groups": [
             "builtin",
             "external",
             "internal",
             ["parent", "sibling"],
             "index",
-            "object",
+            "object"
           ],
-
           "newlines-between": "always",
-
-          pathGroups: [
+          "pathGroups": [
             {
-              pattern: "@app/**",
-              group: "external",
-              position: "after",
-            },
+              "pattern": "@app/**",
+              "group": "external",
+              "position": "after"
+            }
           ],
-
-          pathGroupsExcludedImportTypes: ["builtin"],
-
-          alphabetize: {
-            order: "asc",
-            caseInsensitive: true,
-          },
-        },
+          "pathGroupsExcludedImportTypes": ["builtin"],
+          "alphabetize": {
+            "order": "asc",
+            "caseInsensitive": true
+          }
+        }
       ],
-      "comma-dangle": "es5",
     },
   },
   {
@@ -70,4 +64,4 @@ const config = [
   },
 ];
 
-export default config;
+export default eslintConfig;
