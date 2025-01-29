@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
+import View from "@/app/(root)/questions/view";
 import TagCard from "@/components/cards/TagCard";
 import Preview from "@/components/editor/Preview";
 import Metric from "@/components/Metric";
@@ -19,6 +20,7 @@ const QuestionDetails = async ({ params }: RouteParams) => {
 
   return (
     <>
+      <View questionId={id} />
       <div className="flex-start w-full flex-col">
         <div className="flex w-full flex-col-reverse justify-between">
           <div className="flex items-center justify-start gap-1">
