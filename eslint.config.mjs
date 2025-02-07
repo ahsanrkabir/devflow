@@ -12,9 +12,9 @@ const compat = new FlatCompat({
   allConfig: js.configs.all,
 });
 
-const eslintConfig = [
+const config = [
   {
-    "ignores": ["components/ui/**"],
+    ignores: ["components/ui/**/*"],
   },
   ...compat.extends(
     "next/core-web-vitals",
@@ -28,29 +28,34 @@ const eslintConfig = [
       "import/order": [
         "error",
         {
-          "groups": [
+          groups: [
             "builtin",
             "external",
             "internal",
             ["parent", "sibling"],
             "index",
-            "object"
+            "object",
           ],
+
           "newlines-between": "always",
-          "pathGroups": [
+
+          pathGroups: [
             {
-              "pattern": "@app/**",
-              "group": "external",
-              "position": "after"
-            }
+              pattern: "@app/**",
+              group: "external",
+              position: "after",
+            },
           ],
-          "pathGroupsExcludedImportTypes": ["builtin"],
-          "alphabetize": {
-            "order": "asc",
-            "caseInsensitive": true
-          }
-        }
+
+          pathGroupsExcludedImportTypes: ["builtin"],
+
+          alphabetize: {
+            order: "asc",
+            caseInsensitive: true,
+          },
+        },
       ],
+      "comma-dangle": "off",
     },
   },
   {
@@ -64,4 +69,4 @@ const eslintConfig = [
   },
 ];
 
-export default eslintConfig;
+export default config;
