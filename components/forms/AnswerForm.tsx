@@ -83,12 +83,16 @@ const AnswerForm = ({ questionId, questionTitle, questionContent }: Props) => {
         description: "You need to be logged in to generate AI answers",
       });
     }
+
     setIsAISubmitting(true);
+
+    const userAnswer = editorRef.current?.getMarkdown();
 
     try {
       const { success, data, error } = await api.ai.getAnswer(
         questionTitle,
-        questionContent
+        questionContent,
+        userAnswer
       );
 
       if (!success) {

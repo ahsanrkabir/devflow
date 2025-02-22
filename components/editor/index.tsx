@@ -69,7 +69,7 @@ const Editor = ({ value, editorRef, fieldChange }: Props) => {
             txt: "txt",
             sql: "sql",
             html: "html",
-            sass: "sass",
+            saas: "saas",
             scss: "scss",
             bash: "bash",
             json: "json",
