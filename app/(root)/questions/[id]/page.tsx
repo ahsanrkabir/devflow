@@ -101,9 +101,9 @@ const QuestionDetails = async ({ params, searchParams }: RouteParams) => {
         <Metric
           imgUrl="/icons/clock.svg"
           alt="Clock icon"
-          value={` asked ${getTimeStamp(new Date(createdAt))}`}
+          value={`asked ${getTimeStamp(new Date(createdAt))}`}
           title=""
-          textStyles="small-regular text-dark400_light700"
+          textStyles="small-regular text-dark400_light700 ml-1"
         />
         <Metric
           imgUrl="/icons/message.svg"
