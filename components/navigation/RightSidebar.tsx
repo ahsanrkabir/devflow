@@ -45,16 +45,16 @@ const RightSidebar = async () => {
                     {title}
                   </p>
                   <div className="flex flex-none items-center gap-2">
-                    <Image
-                      src="/icons/eye.svg"
-                      alt="Chevron"
-                      width={20}
-                      height={20}
-                      className="invert-colors"
-                    />
                     <p className="small-medium text-light400_light500">
                       {views}
                     </p>
+                    <Image
+                      src="/icons/eye.svg"
+                      alt="views"
+                      width={18}
+                      height={18}
+                      className="invert-colors"
+                    />
                   </div>
                 </Link>
               ))}

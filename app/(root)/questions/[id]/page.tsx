@@ -135,6 +135,14 @@ const QuestionDetails = async ({ params, searchParams }: RouteParams) => {
       </div>
 
       <section className="my-5">
+        <AnswerForm
+          questionId={question._id}
+          questionTitle={question.title}
+          questionContent={question.content}
+        />
+      </section>
+
+      <section className="my-5">
         <AllAnswers
           data={answersResult?.answers}
           success={areAnswersLoaded}
@@ -142,14 +150,6 @@ const QuestionDetails = async ({ params, searchParams }: RouteParams) => {
           totalAnswers={answersResult?.totalAnswers || 0}
           page={Number(page) || 1}
           isNext={answersResult?.isNext || false}
-        />
-      </section>
-
-      <section className="my-5">
-        <AnswerForm
-          questionId={question._id}
-          questionTitle={question.title}
-          questionContent={question.content}
         />
       </section>
     </>
