@@ -56,7 +56,16 @@ const TagCard = ({
       </Badge>
 
       {showCount && (
-        <p className="small-medium text-dark500_light700">{questions}</p>
+        <div className="flex flex-none items-center gap-2">
+          <p className="small-medium text-light400_light500">{questions}</p>
+          <Image
+            src="/icons/colorquestion.svg"
+            alt="questions"
+            width={18}
+            height={18}
+            className="invert-colors"
+          />
+        </div>
       )}
     </>
   );

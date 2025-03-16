@@ -275,7 +275,7 @@ body {
   }
 
   .btn {
-    @apply bg-light-900 dark:bg-dark-300 shadow-sm !important;
+    @apply bg-light-900 dark:bg-dark-300 !important;
   }
 
   .btn-secondary {
